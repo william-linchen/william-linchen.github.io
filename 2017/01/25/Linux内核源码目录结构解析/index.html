@@ -3,45 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>How To Build Your Blog | WL</title>
+  <title>Linux内核源码目录结构解析 | WL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="搭建环境
-ubuntu 16.04.4
-Linux 4.4.0
-
-所需工具
-Hexo
-Node
-npm
-git
-deployer1$ npm install hexo-deployer-git -S">
+  <meta name="description" content="在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How To Build Your Blog">
-<meta property="og:url" content="http://yoursite.com/2017/01/25/How-To-Build-Your-Blog/index.html">
+<meta property="og:title" content="Linux内核源码目录结构解析">
+<meta property="og:url" content="http://yoursite.com/2017/01/25/Linux内核源码目录结构解析/index.html">
 <meta property="og:site_name" content="WL">
-<meta property="og:description" content="搭建环境
-ubuntu 16.04.4
-Linux 4.4.0
-
-所需工具
-Hexo
-Node
-npm
-git
-deployer1$ npm install hexo-deployer-git -S">
-<meta property="og:updated_time" content="2017-01-24T16:55:41.203Z">
+<meta property="og:description" content="在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。">
+<meta property="og:updated_time" content="2017-01-24T17:23:19.985Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How To Build Your Blog">
-<meta name="twitter:description" content="搭建环境
-ubuntu 16.04.4
-Linux 4.4.0
-
-所需工具
-Hexo
-Node
-npm
-git
-deployer1$ npm install hexo-deployer-git -S">
+<meta name="twitter:title" content="Linux内核源码目录结构解析">
+<meta name="twitter:description" content="在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。">
   
     <link rel="alternate" href="/atom.xml" title="WL" type="application/atom+xml">
   
@@ -90,10 +63,10 @@ deployer1$ npm install hexo-deployer-git -S">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-How-To-Build-Your-Blog" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Linux内核源码目录结构解析" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/25/How-To-Build-Your-Blog/" class="article-date">
-  <time datetime="2017-01-24T16:55:41.203Z" itemprop="datePublished">2017-01-25</time>
+    <a href="/2017/01/25/Linux内核源码目录结构解析/" class="article-date">
+  <time datetime="2017-01-24T16:58:46.000Z" itemprop="datePublished">2017-01-25</time>
 </a>
     
   </div>
@@ -104,7 +77,7 @@ deployer1$ npm install hexo-deployer-git -S">
         
   
     <h1 class="article-title" itemprop="name">
-      How To Build Your Blog
+      Linux内核源码目录结构解析
     </h1>
   
 
@@ -112,50 +85,12 @@ deployer1$ npm install hexo-deployer-git -S">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><ul>
-<li>ubuntu 16.04.4</li>
-<li>Linux 4.4.0</li>
-</ul>
-<h2 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h2><ul>
-<li>Hexo</li>
-<li>Node</li>
-<li>npm</li>
-<li>git</li>
-<li>deployer<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git -S</div></pre></td></tr></table></figure>
-</li>
-</ul>
+        <p>   在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。</p>
 <a id="more"></a>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><ol>
-<li><p>使用Hexo创建新的项目hexo-blog</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init hexo-blog</div></pre></td></tr></table></figure>
-</li>
-<li><p>进入工程并启动Hexo服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Hexo server</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用浏览器查看是否新建工程成功</p>
-<pre><code>http://localhost:4000/
-</code></pre></li>
-<li><p>可在工程中修改全局配置文件_config.yml</p>
-</li>
-<li><p>写入新的博客文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hex new [layout] &lt;title&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>将工程进行静态化处理</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>生成的静态网页存放在public文件夹中</p>
-<ol>
-<li><p>提交到github上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p><strong>Continue…</strong></p>
-</li>
-</ol>
-
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/25/How-To-Build-Your-Blog/" data-id="ciybru7940000o45l5m1v2fwo" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/01/25/Linux内核源码目录结构解析/" data-id="ciybru79e0002o45lti9oagwp" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -164,19 +99,10 @@ deployer1$ npm install hexo-deployer-git -S">
     
 <nav id="article-nav">
   
-    <a href="/2017/01/25/Linux内核源码目录结构解析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
-      <div class="article-nav-title">
-        
-          Linux内核源码目录结构解析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/25/How-To-Build-Your-Blog/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">How To Build Your Blog</div>
     </a>
   
 </nav>
