@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/25/Linux内核源码目录结构解析/index.html">
 <meta property="og:site_name" content="WL">
 <meta property="og:description" content="在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。">
-<meta property="og:updated_time" content="2017-01-24T17:23:19.985Z">
+<meta property="og:updated_time" content="2017-02-02T15:42:26.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux内核源码目录结构解析">
 <meta name="twitter:description" content="在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。">
@@ -52,9 +52,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -85,12 +85,64 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>   在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。</p>
+        <p>在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。</p>
 <a id="more"></a>
+<p>Linux源码的获取可通过github或者在 <a href="http://www.kernel.org" target="_blank" rel="external">http://www.kernel.org</a> 上获取最新的稳定版本源码包。</p>
+<p>Linux内核源码拿到手后第一件事相信很多人都想知道各个目录都存放了什么样的代码，为什么要这样规划代码目录。同样的，在阅读源码之前也应知道源码的整体分布情况。</p>
+<p>现代操作系统一般由进程管理、内存管理、文件系统、驱动和网络等组成，Linux内核源码的各个目录大致与此相对应，其目录组成如下：</p>
+<ul>
+<li><p>arch<br>包括了所有和体系结构相关的核心代码。里面的每一个目录都代表一种Linux支持的内核架构，例如arm就是arm架构相关的代码，arm目录向下包括很多处理器平台，也包括了启动代码boot、架构相关配置文件configs、内核相关文件kernel、内存管理mm和库lib等。</p>
+</li>
+<li><p>block<br>块设备驱动程序与接口相关。</p>
+</li>
+<li><p>certs<br>认证相关。</p>
+</li>
+<li><p>crypto<br>常用加密和散列算法（如AES，SHA等），还有一些压缩和CRC校验算法。</p>
+</li>
+<li><p>Documentation<br>目录下基本都是txt文档，对每个目录和模块的详细说明。</p>
+</li>
+<li><p>drivers<br>目录都是系统的设备驱动程序。</p>
+</li>
+<li><p>firmware<br>硬件厂商提供的内核固件，由内核驱动调用。</p>
+</li>
+<li><p>fs<br>存放Linux系统支持的文件系统代码。每个子目录对应一个文件系统，例如ext4文件系统对应就是ext4子目录。</p>
+</li>
+<li><p>include<br>目录包括编译核心所需要的大部分头文件，例如与平台相关的头文件在/include/linux子目录下，与模块相关的，例如与acpi相关的存放在/include/acpi。</p>
+</li>
+<li><p>init<br>目录包含核心初始化代码（不是系统的引导代码），这里是研究核心如何工作的好起点。</p>
+</li>
+<li><p>ipc<br>包含核心进程间的通信代码。</p>
+</li>
+<li><p>kernel<br>内核管理的核心代码。实现了大多数Linux系统的内核函数，其中最重要的为sched子目录下的代码。与处理器相关的代码都放在/arch/*/kernel目录下。</p>
+</li>
+<li><p>lib<br>包括核心的库代码。与处理器相关的库代码都放在/arch/*/lib目录下。</p>
+</li>
+<li><p>mm<br>包含独立于cpu体系结构的内存管理代码，如页式存储管理内存的分配和释放等。与具体硬件体系结构相关的内存管理代码存放在/arch/*/mm目录下。</p>
+</li>
+<li><p>net<br>包含网络部分代码，实现了各种常见的网络协议，每个子目录对应于网络的一个方面。</p>
+</li>
+<li><p>samples<br>针对各个模块的实例代码。</p>
+</li>
+<li><p>scripts<br>用于配置核心的脚本文件。</p>
+</li>
+<li><p>security<br>支持安全操作系统相关代码。包括SELinux、Apparmor、Smack和TOMOYO Linux安全模块。</p>
+</li>
+<li><p>sound<br>ALSA，OSS音频设备的驱动核心代码和常用设备驱动。</p>
+</li>
+<li><p>tools<br>内核使用的相关工具代码。</p>
+</li>
+<li><p>usr<br>实现了用于打包和压缩的cpio等。</p>
+</li>
+<li><p>virt<br>内核虚拟化相关的代码。</p>
+</li>
+<li><p>COPYING CREDITS Kbuild Kconfig MAINTAINERS Makefile README</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/25/Linux内核源码目录结构解析/" data-id="ciybru79e0002o45lti9oagwp" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/01/25/Linux内核源码目录结构解析/" data-id="ciycom8xa00011t5lsaxxhequ" class="article-share-link">Share</a>
       
       
     </footer>
@@ -101,7 +153,7 @@
   
   
     <a href="/2017/01/25/How-To-Build-Your-Blog/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">How To Build Your Blog</div>
     </a>
   
@@ -118,23 +170,9 @@
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
-    <div class="widget">
-      <ul class="tag-list"></ul>
-    </div>
-  </div>
-
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
-    <div class="widget tagcloud">
-      
-    </div>
-  </div>
-
   
     
   <div class="widget-wrap">
@@ -148,7 +186,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -177,7 +215,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 William Linchen<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
