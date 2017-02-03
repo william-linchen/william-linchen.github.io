@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="WL">
 <meta property="og:description" content="人拥有五官和脑，能够感知世界，相对应的，机器拥有了传感器才可以感知世界。
 现在移动设备和车载终端等消费类电子设备包含越来越多的传感器，这一篇章所介绍的陀螺仪更加接近人类的小脑，负责平衡部分，而方向感的认知是加速度传感器和磁力计的合力之作。">
-<meta property="og:image" content="https://link.zhihu.com/?target=https%3A//raw.githubusercontent.com/smshen/MarkdownPhotos/master/Res/test.jpg">
-<meta property="og:updated_time" content="2017-02-03T13:31:36.663Z">
+<meta property="og:image" content="https://github.com/william-linchen/william-linchen.github.io/blob/master/raw/gyroscope.gif?raw=true">
+<meta property="og:updated_time" content="2017-02-03T13:38:10.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用传感器简介：加速度传感器，磁力计，陀螺仪">
 <meta name="twitter:description" content="人拥有五官和脑，能够感知世界，相对应的，机器拥有了传感器才可以感知世界。
 现在移动设备和车载终端等消费类电子设备包含越来越多的传感器，这一篇章所介绍的陀螺仪更加接近人类的小脑，负责平衡部分，而方向感的认知是加速度传感器和磁力计的合力之作。">
-<meta name="twitter:image" content="https://link.zhihu.com/?target=https%3A//raw.githubusercontent.com/smshen/MarkdownPhotos/master/Res/test.jpg">
+<meta name="twitter:image" content="https://github.com/william-linchen/william-linchen.github.io/blob/master/raw/gyroscope.gif?raw=true">
   
     <link rel="alternate" href="/atom.xml" title="WL" type="application/atom+xml">
   
@@ -100,20 +100,21 @@
 <h5 id="2-陀螺仪"><a href="#2-陀螺仪" class="headerlink" title="2. 陀螺仪"></a>2. 陀螺仪</h5><ul>
 <li><p>介绍： 陀螺仪是一种用来感测与维持方向的装置，基于角动量不灭的理论设计出来的。其主要由一个位于轴心可以旋转的轮子构成，一旦开始旋转，由于轮子的角动量使其有抗拒方向改变的趋向。陀螺仪多用于航海和航空的导航定位系统。现消费类电子都有其应用，包括手机、游戏机等。</p>
 </li>
-<li><p>原理： 用在手机等智能设备的陀螺仪都是MEMS陀螺仪，里面的微机械结构为振动件，通过测量旋转产生的科氏加速度来获得角速度。通过测量三维坐标系内陀螺转子的垂直轴与设备之间的夹角，并计算角速度，通过夹角和角速度来判别物体在三维空间的运动状态。三轴陀螺仪可以同时测定上、下、左、右、前、后等6个方向（合成方向同样可分解为三轴坐标），最终可判断出设备的移动轨迹和加速度。也就是说<br><img src="https://link.zhihu.com/?target=https%3A//raw.githubusercontent.com/smshen/MarkdownPhotos/master/Res/test.jpg" alt=""></p>
+<li><p>原理： 三轴陀螺，如下图所示，其原理通过测量三维坐标系内陀螺转子的垂直轴与设备之间的夹角，并计算角速度，通过夹角和角速度来判别物体在三维空间的运动状态。三轴陀螺仪可以同时测定上、下、左、右、前、后等6个方向（合成方向同样可分解为三轴坐标），最终可判断出设备的移动轨迹和加速度。也就是说陀螺仪通过测量自身的旋转状态判断出设备当前运动状态，是向前、向后、向上、向下、向左还是向右，是加速（角速度）还是减速（角速度），都可以实现，但是要判断出设备的方位（东南西北），陀螺仪就没有办法了。<br><img src="https://github.com/william-linchen/william-linchen.github.io/blob/master/raw/gyroscope.gif?raw=true" alt=""></p>
 </li>
 </ul>
 <h5 id="3-磁力计"><a href="#3-磁力计" class="headerlink" title="3. 磁力计"></a>3. 磁力计</h5><ul>
 <li>原理：</li>
 </ul>
 <p>磁力计是通过测量磁通量的大小来确定方向的。当磁力计发生倾斜时，通过磁力计的地磁通量将发生变化，从而使方向指向产生误差。因此，如果不带倾斜校正的电子指南针，需要用户水平放置。而利用加速度传感器可以测量倾角的这一原理，可以对电子指南针的倾斜进行补偿。</p>
+<p>用在手机等智能设备的陀螺仪都是MEMS陀螺仪，里面的微机械结构为振动件，通过测量旋转产生的科氏加速度来获得角速度。</p>
 <p><em>参考资料：<br>[陀螺仪原理] www.eepw.com.cn/article/268081.htm
 </em></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/03/常用传感器简介：加速度传感器，磁力计，陀螺仪/" data-id="ciypuoaqs0003fi5lkax2kt6b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/03/常用传感器简介：加速度传感器，磁力计，陀螺仪/" data-id="ciypuw7wk0002mn5l606hggic" class="article-share-link">Share</a>
       
       
     </footer>
