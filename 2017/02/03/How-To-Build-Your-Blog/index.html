@@ -108,7 +108,7 @@ Node
 npm
 git
 deployer1$ npm install hexo-deployer-git -S">
-<meta property="og:updated_time" content="2017-02-06T15:47:38.646Z">
+<meta property="og:updated_time" content="2017-02-06T16:24:47.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How To Build Your Blog">
 <meta name="twitter:description" content="搭建环境
@@ -373,28 +373,23 @@ deployer1$ npm install hexo-deployer-git -S">
 <li><p>可在工程中修改全局配置文件_config.yml</p>
 </li>
 <li><p>写入新的博客文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new [layout] &lt;title&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new [layout] <span class="string">"title"</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>将工程进行静态化处理</p>
+<li><p>将工程进行静态化处理，并将生成的静态网页存放在public文件夹中。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>生成的静态网页存放在public文件夹中</p>
-<ol>
 <li><p>提交到github上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 </li>
-<li><p>更换主题theme，假如更换为目前正在使用的NexT主题，可直接</p>
+<li><p>更换主题theme，假如更换为目前正在使用的NexT主题，可直接git库，然后在hexo工程的_config.yml中的theme更改为next即可使用新的主题，在主题目录下_config.yml文档中可配置相关的参数。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next.git theme/next</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>然后在hexo工程的_config.yml中的theme更改为next即可使用新的主题，在主题目录下_config.yml文档中可配置相关的参数。</p>
-<ol>
-<li>如果在主题中添加tags标签，则可在hexo工程下输入<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page tags</div></pre></td></tr></table></figure>
+<li><p>如果在主题中添加tags标签，则可在hexo工程下输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ hexo new page tags</div><div class="line">编辑 <span class="built_in">source</span>/tags/index.md为</div><div class="line">title: tags</div><div class="line">data: xxx</div><div class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></div><div class="line">comments: <span class="literal">false</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对于添加categories也是同样的操作。</p>
 </li>
 </ol>
-<p>编辑 source/tags/index.md为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">data: xxx</div><div class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></div><div class="line">comments: <span class="literal">false</span></div></pre></td></tr></table></figure></p>
-<p>对于添加categories也是同样的操作。</p>
 <p>  <strong>Continue…</strong></p>
 
       
