@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://yoursite.com/2017/01/25/Linux内核源码目录结构解析/index.html">
 <meta property="og:site_name" content="WL">
 <meta property="og:description" content="在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。">
-<meta property="og:updated_time" content="2017-02-06T15:48:17.797Z">
+<meta property="og:updated_time" content="2017-02-08T15:21:59.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux内核源码目录结构解析">
 <meta name="twitter:description" content="在进入Linux内核世界之前，先大致了解Linux源代码目录结构是很有必要，而我这里是在理解内核源码之后不断深入内核目录结构的解析（基于最新源码）。">
@@ -328,7 +328,7 @@
 <ul>
 <li><p>arch<br>包括了所有和体系结构相关的核心代码。里面的每一个目录都代表一种Linux支持的内核架构，例如arm就是arm架构相关的代码，arm目录向下包括很多处理器平台，也包括了启动代码boot、架构相关配置文件configs、内核相关文件kernel、内存管理mm和库lib等。</p>
 </li>
-<li><p>block<br>块设备驱动程序与接口相关。</p>
+<li><p>block<br>提供块设备操作的一些基本接口。</p>
 </li>
 <li><p>certs<br>认证相关。</p>
 </li>
@@ -337,7 +337,58 @@
 <li><p>Documentation<br>目录下基本都是txt文档，对每个目录和模块的详细说明。</p>
 </li>
 <li><p>drivers<br>目录都是系统的设备驱动程序。</p>
+<ul>
+<li>accessibility – 可访问设备，目前里面包括盲人设备</li>
+<li>acpi – 高级配置和电源管理接口</li>
+<li>amba – ARM研发的AMBA片上总线相关</li>
+<li>android – Android平台支持的设备</li>
+<li>ata – 硬盘接口技术Advanced Technology Attachment相关驱动</li>
+<li>atm – 异步传输模式设备驱动</li>
+<li>auxdisplay – 辅助显示设备驱动</li>
+<li>base</li>
+<li>bcma – Broadcom基于amba总线驱动上开发的</li>
+<li>block – 块设备驱动</li>
+<li>bluetooth – 蓝牙设备驱动</li>
+<li>bus – </li>
+<li>cdrom – CDROM设备驱动</li>
+<li>char – 字符设备驱动</li>
+<li>clk – 时钟驱动框架，与平台相关</li>
+<li>clocksource – 时钟源设备驱动</li>
+<li>connector – 内核空间和用户空间通信的新机制连接器</li>
+<li>cpufreq – cpu动态变频</li>
+<li>cpuidle – </li>
+<li>crypto – 加解密设备驱动</li>
+<li>dax – 直接访问，后面的X只是为了看起来酷，对于新兴的NVDIMM设备，可直接访问此设备上的文件系统</li>
+<li>dca – 直接缓存访问??</li>
+<li>devfreq – 设备相关的频率调节</li>
+<li>dio – dio设备驱动</li>
+<li>dma – dma设备驱动</li>
+<li>dma-buf – 提供DMA缓存的设备驱动</li>
+<li>edac – 错误检测和纠正设备驱动</li>
+<li>eisa – </li>
+<li>extcon – 外部连接器</li>
+<li>firewire – IEEE1394 firewire设备驱动</li>
+<li>firmware – </li>
+<li>fmc – FMC连接器总线驱动</li>
+<li>fpga – FPGA框架驱动</li>
+<li>gpio – GPIO驱动，与处理器相关</li>
+<li>gpu – 包括DRM图形渲染架构，访问图形界面的DMA引擎，IMX的IPU图像处理单元等</li>
+<li>hid – 人机交互设备驱动</li>
+<li>hsi – 高速同步串口接口</li>
+<li>hv – 微软的虚拟化技术驱动</li>
+<li>hwmon – 硬件监控芯片驱动，监控类传感器的芯片驱动</li>
+<li>hwspinlock – 硬件自旋锁框架接口</li>
+<li>hwtracing – 硬件跟踪调试驱动</li>
+<li>i2c – i2c子系统总线驱动</li>
+<li>ide – 管理ATA/IDE和ATAPI单元，主要还是硬盘驱动IDE和CD-ROM驱动ATAPI</li>
+<li>idle – Intel处理器的idle处理驱动</li>
+<li>iio – 工业I/O子系统，包括各种使用不同物理接口(i2c, spi, etc)传感器的驱动</li>
+<li>infiniband – 支持多并发链接的”转换线缆”技术的硬件设备驱动</li>
+<li>input – input设备子系统，包括各种输入设备的驱动，键盘、混合设备、鼠标、触摸屏、游戏接口、游戏操作杆、触控rmi4、触摸面板、串口IO输入设备</li>
+</ul>
 </li>
+</ul>
+<ul>
 <li><p>firmware<br>硬件厂商提供的内核固件，由内核驱动调用。</p>
 </li>
 <li><p>fs<br>存放Linux系统支持的文件系统代码。每个子目录对应一个文件系统，例如ext4文件系统对应就是ext4子目录。</p>
@@ -516,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -527,7 +578,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
